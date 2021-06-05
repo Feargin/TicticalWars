@@ -55,6 +55,9 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
+/[Aa]ssets/SuperEditor/**
+/[Aa]ssets/SuperEditor.meta
+
 # Crashlytics generated file
 crashlytics-build.properties
 

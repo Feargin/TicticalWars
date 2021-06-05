@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="71b19465-8fc7-40cf-9a43-f8dd4ceae14f" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/PanzerStats.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/ButtonSuicide.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerAttak.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/Suicide.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SoundController.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/Scripts/Entity.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/PanzerStats.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/SelectEnemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemySelector.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/AI.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Map/MapGeneratorTwoType.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SelectTille.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Map/Map.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/Suicide.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/AI/AI_Moving.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Map/SelectTille.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerEntity.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerAttak.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/Egg.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/Entity.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SoundController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/CollideAttack.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/AI/AI.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/Attak.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/EnemyTurnSequence.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PF_AStar.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/AStar/Scripts/GridGraph.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Movement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/AStar/Scripts/AStar.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Cheats.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerSelector.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ChangeTurn.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/ButtonSuicide.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/MoveHelper.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enemy/Spawn.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Map/Tile.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/SpawnEgg.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameController.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1tCAFJ9WnEUPtEstCql4DPDzXwH" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.smartKeys_rider" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="selectedOptions">
+        <set />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="selectedOptions">
+        <set />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="71b19465-8fc7-40cf-9a43-f8dd4ceae14f" name="Default Changelist" comment="" />
+      <created>1622262592531</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1622262592531</updated>
+      <workItem from="1622262602738" duration="825000" />
+      <workItem from="1622263562141" duration="203000" />
+      <workItem from="1622266258340" duration="1780000" />
+      <workItem from="1622268064341" duration="1949000" />
+      <workItem from="1622270293588" duration="1779000" />
+      <workItem from="1622272118037" duration="1586000" />
+      <workItem from="1622274494213" duration="69000" />
+      <workItem from="1622274581163" duration="1429000" />
+      <workItem from="1622276388545" duration="1784000" />
+      <workItem from="1622278197883" duration="1784000" />
+      <workItem from="1622280008995" duration="1877000" />
+      <workItem from="1622281913296" duration="1780000" />
+      <workItem from="1622283721442" duration="1470000" />
+      <workItem from="1622285544161" duration="1779000" />
+      <workItem from="1622287398781" duration="1782000" />
+      <workItem from="1622289211148" duration="1782000" />
+      <workItem from="1622291400301" duration="1631000" />
+      <workItem from="1622293209181" duration="736000" />
+      <workItem from="1622297530953" duration="1133000" />
+      <workItem from="1622299587360" duration="1778000" />
+      <workItem from="1622301394814" duration="1777000" />
+      <workItem from="1622303198246" duration="1801000" />
+      <workItem from="1622305030461" duration="1784000" />
+      <workItem from="1622306861659" duration="1787000" />
+      <workItem from="1622308686722" duration="1777000" />
+      <workItem from="1622310489519" duration="1482000" />
+      <workItem from="1622313484098" duration="1817000" />
+      <workItem from="1622315438615" duration="1276000" />
+      <workItem from="1622352515917" duration="1774000" />
+      <workItem from="1622354322527" duration="1539000" />
+      <workItem from="1622356131092" duration="1782000" />
+      <workItem from="1622357961335" duration="862000" />
+      <workItem from="1622374745739" duration="1781000" />
+      <workItem from="1622376606970" duration="1418000" />
+      <workItem from="1622378856485" duration="1780000" />
+      <workItem from="1622381510586" duration="1776000" />
+      <workItem from="1622383319905" duration="1661000" />
+      <workItem from="1622385859168" duration="1375000" />
+      <workItem from="1622389362007" duration="1137000" />
+      <workItem from="1622391848087" duration="1937000" />
+      <workItem from="1622393863727" duration="1942000" />
+      <workItem from="1622395953843" duration="1776000" />
+      <workItem from="1622401034209" duration="1781000" />
+      <workItem from="1622402868225" duration="1964000" />
+      <workItem from="1622405025026" duration="1552000" />
+      <workItem from="1622406999059" duration="1775000" />
+      <workItem from="1622410307887" duration="948000" />
+      <workItem from="1622529461958" duration="120000" />
+      <workItem from="1622534398440" duration="1770000" />
+      <workItem from="1622536199328" duration="1777000" />
+      <workItem from="1622538061925" duration="1782000" />
+      <workItem from="1622539878441" duration="1781000" />
+      <workItem from="1622541692348" duration="816000" />
+      <workItem from="1622545874138" duration="1753000" />
+      <workItem from="1622548342760" duration="1258000" />
+      <workItem from="1622550254342" duration="1701000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="781" y="165" key="SettingsEditor" timestamp="1622354039871">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="781" y="165" key="SettingsEditor/0.0.2560.1040@0.0.2560.1040" timestamp="1622354039871" />
+    <state x="936" y="242" key="run.anything.popup" timestamp="1622410511184">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="936" y="242" key="run.anything.popup/0.0.2560.1040@0.0.2560.1040" timestamp="1622410511184" />
+  </component>
+</project>

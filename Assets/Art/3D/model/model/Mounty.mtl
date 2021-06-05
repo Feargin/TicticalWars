@@ -1,0 +1,11 @@
+newmtl Volume4
+Ns 100.000
+d 1.00000
+illum 2
+Kd 1.00000 1.00000 1.00000
+Ka 0.00000 0.00000 0.00000
+Ks 1.00000 1.00000 1.00000
+Ke 0.00000e+0 0.00000e+0 0.00000e+0
+map_Kd Mounty_Volume4_color.tga
+map_Ks Mounty_Volume4_rough.tga
+map_bump Mounty_Volume4_nmap.tga
