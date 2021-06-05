@@ -1,11 +1,11 @@
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 using System.Linq;
 
 [InitializeOnLoad]
 public class CustomHierarchy : MonoBehaviour
 {
-    private static Vector2 offset = new Vector2(0, 3);
+	private static Vector2 offset = new Vector2(0, 0);
     public static Color FontColorDefault = new Color(0.8235295f, 0.8235295f, 0.8235295f);
     public static Color FontColorInvisibl = new Color(0.6037736f, 0.6037736f, 0.6037736f);
     public static FontStyle styleFont = FontStyle.Bold;
