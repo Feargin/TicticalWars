@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -46,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
     
 	private void SelectTile()
 	{
-		if(Physics.Raycast(_main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, float.PositiveInfinity, _walkableMask, QueryTriggerInteraction.Ignore))
+		if(Physics.Raycast(_main.ScreenPointToRay(Mouse.current.position.ReadValue()), out RaycastHit hit, float.PositiveInfinity, _walkableMask, QueryTriggerInteraction.Ignore))
 		{
 			_selectedPlayer.movement.MoveTo(hit.transform.position);
 			MoveHelper.Instance.UnlockSelect();

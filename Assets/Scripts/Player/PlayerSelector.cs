@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerSelector : Singleton<PlayerSelector>
 {
@@ -25,7 +26,7 @@ public class PlayerSelector : Singleton<PlayerSelector>
 	
     private void Update()
     {
-	    if(Input.GetMouseButtonDown(0))
+	    if(Mouse.current.leftButton.IsPressed())
 	    {
 	    	if(!SelectPlayerEntity())
 	    	{
@@ -35,7 +36,7 @@ public class PlayerSelector : Singleton<PlayerSelector>
 	    RaycastHit hit;
 
 	    if (_selectedTile != null) _selectedTile.Selected = false;
-		    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, float.PositiveInfinity,
+		    if (Physics.Raycast(Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue()), out hit, float.PositiveInfinity,
 			    _walkableMask, QueryTriggerInteraction.Ignore))
 		    {
 			    
@@ -58,7 +59,7 @@ public class PlayerSelector : Singleton<PlayerSelector>
 			SelectedPlayer.selectimage.SetActive(false);
 		}
 
-		if (Physics.Raycast(_main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, float.PositiveInfinity, _playerMask, QueryTriggerInteraction.Ignore))
+		if (Physics.Raycast(_main.ScreenPointToRay(Mouse.current.position.ReadValue()), out RaycastHit hit, float.PositiveInfinity, _playerMask, QueryTriggerInteraction.Ignore))
 		{
 			if (hit.transform.gameObject.GetComponent<PlayerEntity>().type == Entity.Type.Godzilla)
 			{

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class MoveHelper : Singleton<MoveHelper>
@@ -94,7 +95,7 @@ public class MoveHelper : Singleton<MoveHelper>
 	private void SelectEntity()
 	{
 		RaycastHit hit;
-		if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, float.PositiveInfinity, _entityMask, QueryTriggerInteraction.Ignore))
+		if(Physics.Raycast(Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue()), out hit, float.PositiveInfinity, _entityMask, QueryTriggerInteraction.Ignore))
 		{
 			if(hit.transform.TryGetComponent<Entity>(out Entity e) && _selectedEntity != e)
 			{
