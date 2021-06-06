@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class Entity : MonoBehaviour
 {
@@ -15,12 +16,12 @@ public class Entity : MonoBehaviour
 	[Space]
 	[Header("--------------------- Системные --------------------")]
 	
-	[HideInInspector] public Spawn spawn;
-	[HideInInspector] public SpawnEgg spawnEgg;
+	[Inject] protected Spawn spawn;
+	[Inject] protected SpawnEgg spawnEgg;
 	
 	[HideInInspector] public Movement movement;
-	[SerializeField] private Image _healtBar;
-	[SerializeField] private GameObject _vfx;
+	[SerializeField] protected Image _healtBar;
+	[SerializeField] protected GameObject _vfx;
 	public bool _isDead = false;
 	
 	private void OnEnable() => ChangeTurn.TheNextTurn += ResetActionPoints;
@@ -43,12 +44,12 @@ public class Entity : MonoBehaviour
 			_healtBar.fillAmount = 1;
 	}
 	
-	public void Init(Map map, Spawn _spawn, SoundController audioManager, SpawnEgg _spawnEgg)
-	{
-		spawn = _spawn;
-		spawnEgg = _spawnEgg;
-		movement.pathfinding.Init(map);
-	}
+	//public void Init(Map map, Spawn _spawn, SoundController audioManager, SpawnEgg _spawnEgg)
+	//{
+	//	spawn = _spawn;
+	//	spawnEgg = _spawnEgg;
+	//	movement.pathfinding.Init(map);
+	//}
 
 	public void DealDamage(int damage)
 	{

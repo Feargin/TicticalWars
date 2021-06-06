@@ -1,14 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class PF_AStar : MonoBehaviour
 {
-	[HideInInspector] public Map map;
-	
-	public void Init(Map _map)
-	{
-		map = _map;
-	}
+	[Inject] public Map map;
 	
 	public List<Node> FindPathFly(Vector3 _from, Vector3 _to)
 	{

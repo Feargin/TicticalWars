@@ -1,16 +1,12 @@
 ﻿using UnityEngine;
+using Zenject;
 
 public class AI_FindTarget : AI
 {
 	public Entity Target;
 	public Entity.Type PriorityTarget;
 	
-	private Spawn spawn;
-	
-	public void Init(Spawn _spawn)
-	{
-		spawn = _spawn;
-	}
+	[Inject] private Spawn spawn;
     
 	public override void BeginState()
 	{

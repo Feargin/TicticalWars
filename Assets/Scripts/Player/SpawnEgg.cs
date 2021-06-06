@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class SpawnEgg : MonoBehaviour
 {
-	[Zenject.Inject, HideInInspector] public Map map;
-	[Zenject.Inject, HideInInspector] public Spawn spawn;
-	[Zenject.Inject, HideInInspector] public SpawnEgg spawnEgg;
-	[Zenject.Inject, HideInInspector] public SoundController soundController;
+	[Inject, HideInInspector] public Map map;
+	[Inject, HideInInspector] public Spawn spawn;
+	[Inject, HideInInspector] public SpawnEgg spawnEgg;
+	[Inject, HideInInspector] public SoundController soundController;
+	[Inject] private IEntityFactory _entityFactory;
 	
 	[SerializeField] private Egg _egg;
     [SerializeField] private int _hpNewKaujy;
@@ -15,10 +17,9 @@ public class SpawnEgg : MonoBehaviour
     private bool eggInfoReg = false;
     
     public void Spawner(Vector3 position)
-    {
-	    var egg = Instantiate(_egg, position, Quaternion.identity);
-	    egg.Init(map, spawn, soundController, spawnEgg);
-	    spawn.Players.Add(egg);
+	{
+		Entity egg = _entityFactory.Create(_egg, position);
+		spawn.Players.Add(egg as PlayerEntity);
         if (!eggInfoReg)
         {
             Time.timeScale = 0;

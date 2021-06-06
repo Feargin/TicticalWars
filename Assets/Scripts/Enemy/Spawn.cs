@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
+using Zenject;
 
 public class Spawn : MonoBehaviour
 {
@@ -16,10 +17,13 @@ public class Spawn : MonoBehaviour
     [SerializeField] private int _countArtillery = 2;
     [Space]
     [Header("---------------------------- Системные --------------------------")]
-    [Zenject.Inject, HideInInspector] public Map map;
-	[Zenject.Inject, HideInInspector] public Spawn spawn;
-	[Zenject.Inject, HideInInspector] public SpawnEgg spawnEgg;
-	[Zenject.Inject, HideInInspector] public SoundController audioManager;
+    [Inject, HideInInspector] public Map map;
+	[Inject, HideInInspector] public Spawn spawn;
+	[Inject, HideInInspector] public SpawnEgg spawnEgg;
+	[Inject, HideInInspector] public SoundController audioManager;
+	
+	[Inject] private IEntityFactory _entityFactory;
+	
 	public LayerMask _tileMask;
 	public PlayerEntity Kaujy;
     [SerializeField] private string[] _names;
@@ -123,12 +127,9 @@ public class Spawn : MonoBehaviour
                             }
                         }
                     }
-
-	                var enemy = Instantiate(_enemy[index], spawnCoord + Vector3.up, Quaternion.identity);
-	                enemy.Init(spawn, map, audioManager, spawnEgg);
-	                enemy.movement.pathfinding.Init(map);
+	                Entity enemy = _entityFactory.Create(_enemy[index], spawnCoord + Vector3.up);
                     enemy.name = _names[index];
-                    Enemyes.Add(enemy);
+	                Enemyes.Add(enemy as Enemy);
                     co += 1;
 
                 }
@@ -151,12 +152,11 @@ public class Spawn : MonoBehaviour
         {
             var vfx = Instantiate(_vfxKaugySpawn, _coordCell, Quaternion.identity);
             Destroy(vfx, 3f);
-	        var player = Instantiate(Kaujy, _coordCell, Quaternion.identity);
-	        player.Init(map, spawn, audioManager, spawnEgg);
-	        //player.movement.pathfinding.Init(map);
-            player.name = "Kaiju";
+	        //var player = Instantiate(Kaujy, _coordCell, Quaternion.identity);
+	        Entity player = _entityFactory.Create(Kaujy, _coordCell);
+	        player.name = "Kaiju";
             _countKaujy -= 1;
-            Players.Add(player);
+	        Players.Add(player as PlayerEntity);
             _targetCell.GetComponent<TileParameters>().SpawnKaujy = false;
             ClearSpawnCoord();
             if (_countKaujy <= 0)

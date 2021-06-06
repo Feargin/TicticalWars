@@ -2,17 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class PlayerAttak : MonoBehaviour
 {
-	private SoundController soundController;
-	
+	[Inject] private SoundController soundController;
 	private PlayerSelector _playerSelect;
-	
-	public void Init(SoundController _soundController)
-	{
-		soundController = _soundController;
-	}
     
     void Start()
     {

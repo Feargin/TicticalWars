@@ -12,6 +12,7 @@ public class ServicesInstaller : MonoInstaller
 	
     public override void InstallBindings()
 	{
+		Container.Bind<IEntityFactory>().To<EntityFactory>().AsSingle();
 		Container.Bind<SoundController>().FromInstance(_audioManager);
 		Container.Bind<ChangeTurn>().FromInstance(_turnSystem);
 		Container.Bind<MoveHelper>().FromInstance(_moveHelper);

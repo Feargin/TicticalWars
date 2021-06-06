@@ -1246,6 +1246,7 @@ MonoBehaviour:
   _countArtillery: 1
   map: {fileID: 0}
   spawn: {fileID: 0}
+  spawnEgg: {fileID: 0}
   audioManager: {fileID: 0}
   _tileMask:
     serializedVersion: 2
@@ -1279,7 +1280,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a254f5231d0c684185117e432074594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 0}
   spawn: {fileID: 0}
+  spawnEgg: {fileID: 0}
   soundController: {fileID: 0}
   _egg: {fileID: 4604392514615264581, guid: fc4ed87248a3adb409d79a657a6b00f6, type: 3}
   _hpNewKaujy: 260
