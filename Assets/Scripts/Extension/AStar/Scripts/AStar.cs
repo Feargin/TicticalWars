@@ -59,13 +59,9 @@ public static class AStar
 		}
         
 		path.Reverse();
-
 		return path;
 	}
 	
-    /// <summary>
-    /// Returns the best path as a List of Nodes
-    /// </summary>
 	public static List<Node> Search(GridGraph graph, Node start, Node goal, bool makeEndWalkable = false)
     {
         Dictionary<Node, Node> came_from = new Dictionary<Node, Node>();
@@ -111,7 +107,6 @@ public static class AStar
 	    }
         
         path.Reverse();
-
         return path;
     }
     
