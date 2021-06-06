@@ -14,6 +14,10 @@ public class Entity : MonoBehaviour
 	[SerializeField] private int _currentHealth;
 	[Space]
 	[Header("--------------------- Системные --------------------")]
+	
+	[HideInInspector] public Spawn spawn;
+	[HideInInspector] public SpawnEgg spawnEgg;
+	
 	[HideInInspector] public Movement movement;
 	[SerializeField] private Image _healtBar;
 	[SerializeField] private GameObject _vfx;
@@ -38,6 +42,13 @@ public class Entity : MonoBehaviour
 		if(_healtBar != null)
 			_healtBar.fillAmount = 1;
 	}
+	
+	public void Init(Map map, Spawn _spawn, SoundController audioManager, SpawnEgg _spawnEgg)
+	{
+		spawn = _spawn;
+		spawnEgg = _spawnEgg;
+		movement.pathfinding.Init(map);
+	}
 
 	public void DealDamage(int damage)
 	{
@@ -52,13 +63,13 @@ public class Entity : MonoBehaviour
 	private void Kill()
 	{
 		_isDead = true;
-		if(this is Enemy) Spawn.Instance.Enemyes.Remove(this as Enemy);
+		if(this is Enemy) spawn.Enemyes.Remove(this as Enemy);
 		else
 		{
-			Spawn.Instance.Players.Remove(this as PlayerEntity);
+			spawn.Players.Remove(this as PlayerEntity);
 			if (!(this is Egg))
 			{
-				SpawnEgg.Instance.Spawner(transform.position);
+				spawnEgg.Spawner(transform.position);
 			}
 		}
 		

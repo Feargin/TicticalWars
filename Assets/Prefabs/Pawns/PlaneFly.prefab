@@ -354,6 +354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 21
+  soundController: {fileID: 0}
 --- !u!114 &-1433885455803210353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,11 +375,15 @@ MonoBehaviour:
   TypeEnemy: 3
   _immortal: 0
   _currentHealth: 0
+  spawn: {fileID: 0}
+  spawnEgg: {fileID: 0}
   movement: {fileID: 0}
   _healtBar: {fileID: 0}
   _vfx: {fileID: 1255101210193260751, guid: a56c4afb6ccddbd4eb08f6ad1a0f186d, type: 3}
   _isDead: 0
   AI_Behavoiur: {fileID: 9041001316395265700}
+  attack: {fileID: 0}
+  collideAttack: {fileID: 8132306906815974351}
   TurnPassed: 0
 --- !u!114 &5172218527805129802
 MonoBehaviour:
@@ -392,6 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6087a933333fc6041872e742cd0046f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 0}
 --- !u!65 &5137001938906677703
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -1,11 +1,14 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] private GameObject _winPanel;
+	[Zenject.Inject, HideInInspector] public Spawn spawn;
+	[Zenject.Inject, HideInInspector] public ChangeTurn turnSystem;
+	
+	[SerializeField] private GameObject _winPanel;
     [SerializeField] private GameObject _failPanel;
     private float _timer = 0;
     private void Start()
@@ -17,20 +20,20 @@ public class GameController : MonoBehaviour
     
     private void FixedUpdate()
     {
-        if ((Spawn.Instance.Enemyes.Count <= 0 || Spawn.Instance.Players.Count <= 0) && ChangeTurn.Instance.CountTurn >= 2) _timer += Time.deltaTime;
+	    if ((spawn.Enemyes.Count <= 0 || spawn.Players.Count <= 0) && turnSystem.CountTurn >= 2) _timer += Time.deltaTime;
 
         if (_timer >= 2f)
         {
-            if (Spawn.Instance.Enemyes.Count <= 0 && ChangeTurn.Instance.CountTurn >= 4)
+	        if (spawn.Enemyes.Count <= 0 && turnSystem.CountTurn >= 4)
             {
                 UIManager.Instance.EnablePanel(_winPanel);
-                ChangeTurn.Instance.CountTurn = 0;
+                turnSystem.CountTurn = 0;
                 Camera.main.GetComponent<AudioSource>().Stop();
             }
-            else if (Spawn.Instance.Players.Count <= 0)
+	        else if (spawn.Players.Count <= 0)
             {
                 UIManager.Instance.EnablePanel(_failPanel);
-                ChangeTurn.Instance.CountTurn = 0;
+                turnSystem.CountTurn = 0;
                 Camera.main.GetComponent<AudioSource>().Stop();
             }
 

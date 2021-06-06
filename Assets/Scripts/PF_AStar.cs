@@ -3,21 +3,11 @@ using UnityEngine;
 
 public class PF_AStar : MonoBehaviour
 {
-	private Map _map;
-
-	[HideInInspector]
-	public Map map
-	{
-		get
-		{
-			if (_map == null) _map = Map.Instance;
-			return _map;
-		}
-	}
+	[HideInInspector] public Map map;
 	
-	private void Start()
+	public void Init(Map _map)
 	{
-		_map = Map.Instance;
+		map = _map;
 	}
 	
 	public List<Node> FindPathFly(Vector3 _from, Vector3 _to)

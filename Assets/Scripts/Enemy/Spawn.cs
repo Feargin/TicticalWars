@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
 
-public class Spawn : Singleton<Spawn>
+public class Spawn : MonoBehaviour
 {
     [Header("----------------------- Количество объектов -----------------------")]
     [SerializeField] private int _countKaujy = 2;
@@ -16,7 +16,11 @@ public class Spawn : Singleton<Spawn>
     [SerializeField] private int _countArtillery = 2;
     [Space]
     [Header("---------------------------- Системные --------------------------")]
-    public LayerMask _tileMask;
+    [Zenject.Inject, HideInInspector] public Map map;
+	[Zenject.Inject, HideInInspector] public Spawn spawn;
+	[Zenject.Inject, HideInInspector] public SpawnEgg spawnEgg;
+	[Zenject.Inject, HideInInspector] public SoundController audioManager;
+	public LayerMask _tileMask;
 	public PlayerEntity Kaujy;
     [SerializeField] private string[] _names;
     public PlayerEntity EpicKaujy;
@@ -30,7 +34,6 @@ public class Spawn : Singleton<Spawn>
     private Vector3 _coordCell;
 	private Transform _targetCell;
     
-	public static event System.Action OnGameStart;
 
     public Spawn(bool readySpawn)
     {
@@ -121,7 +124,9 @@ public class Spawn : Singleton<Spawn>
                         }
                     }
 
-                    var enemy = Instantiate(_enemy[index], spawnCoord + Vector3.up, Quaternion.identity);
+	                var enemy = Instantiate(_enemy[index], spawnCoord + Vector3.up, Quaternion.identity);
+	                enemy.Init(spawn, map, audioManager, spawnEgg);
+	                enemy.movement.pathfinding.Init(map);
                     enemy.name = _names[index];
                     Enemyes.Add(enemy);
                     co += 1;
@@ -146,7 +151,9 @@ public class Spawn : Singleton<Spawn>
         {
             var vfx = Instantiate(_vfxKaugySpawn, _coordCell, Quaternion.identity);
             Destroy(vfx, 3f);
-            var player = Instantiate(Kaujy, _coordCell, Quaternion.identity);
+	        var player = Instantiate(Kaujy, _coordCell, Quaternion.identity);
+	        player.Init(map, spawn, audioManager, spawnEgg);
+	        //player.movement.pathfinding.Init(map);
             player.name = "Kaiju";
             _countKaujy -= 1;
             Players.Add(player);
@@ -157,8 +164,6 @@ public class Spawn : Singleton<Spawn>
 	            GridSpawnKaujy(2, false);
                 NextTurnButton.SetActive(true);
 	            PlayerControler.SetActive(true);
-	            //OnGameStart?.Invoke();
-
                 return;
             }
             

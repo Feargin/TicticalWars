@@ -1,9 +1,9 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Net.Mime;
 using UnityEngine;
 
-public class SoundController : Singleton<SoundController>
+public class SoundController : MonoBehaviour
 {
     public AudioClip[] Clip;
     private AudioSource _audioSource;

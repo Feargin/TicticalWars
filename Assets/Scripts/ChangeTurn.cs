@@ -5,8 +5,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ChangeTurn : Singleton<ChangeTurn>
+public class ChangeTurn : MonoBehaviour
 {
+	[Zenject.Inject, HideInInspector] public SoundController soundController;
+	
 	[SerializeField] private int [] _numTurn;
 	[SerializeField] private int [] _countEnemy;
 	[SerializeField] private int [] _indexEnemy;
@@ -19,6 +21,8 @@ public class ChangeTurn : Singleton<ChangeTurn>
     public int CountTurn = 0;
     public int ToSpawn;
 
+	[Zenject.Inject] public Spawn spawn;
+	
     #region Events
 	public static event System.Action<bool> TheNextTurn;
 	#endregion
@@ -69,10 +73,10 @@ public class ChangeTurn : Singleton<ChangeTurn>
 	    {
 		    if (v == CountTurn)
 		    {
-			    SoundController.Instance.SetClip(2);
+			    soundController.SetClip(2);
 			    for (int i = 0; i < _indexEnemy.Length; i++)
 			    {
-				    Spawn.Instance.Creator(_indexEnemy[i], _countEnemy[i]);
+				    spawn.Creator(_indexEnemy[i], _countEnemy[i]);
 			    }
 			    
 		    }

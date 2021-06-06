@@ -1,16 +1,14 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public sealed class UIManager : Singleton<UIManager>
+public sealed class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject _initialPanel;
     private GameObject _lastPanel;
     public static UIManager Instance;
     
-    
-
     private void Awake() 
     {
         if(Instance != null)

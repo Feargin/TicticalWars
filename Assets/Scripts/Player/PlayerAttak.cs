@@ -5,8 +5,15 @@ using UnityEngine;
 
 public class PlayerAttak : MonoBehaviour
 {
-    private PlayerSelector _playerSelect;
-    public static event System.Action AttakPlayer;
+	private SoundController soundController;
+	
+	private PlayerSelector _playerSelect;
+	
+	public void Init(SoundController _soundController)
+	{
+		soundController = _soundController;
+	}
+    
     void Start()
     {
         _playerSelect = GetComponent<PlayerSelector>();
@@ -16,7 +23,7 @@ public class PlayerAttak : MonoBehaviour
     {
         if (col.transform.GetComponent<Enemy>())
         {
-            SoundController.Instance.SetClip(0);
+	        soundController.SetClip(0);
             col.transform.GetComponent<Enemy>().DealDamage(100);
         }
     }

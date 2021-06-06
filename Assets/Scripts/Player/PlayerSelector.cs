@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerSelector : Singleton<PlayerSelector>
+public class PlayerSelector : MonoBehaviour
 {
 	[Header("------------- Info ----------------------")]
 	[ReadOnly] public Entity SelectedPlayer;

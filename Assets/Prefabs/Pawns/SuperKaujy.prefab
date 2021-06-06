@@ -1428,6 +1428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6087a933333fc6041872e742cd0046f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 0}
 --- !u!114 &1882557183696700998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1463,10 +1464,13 @@ MonoBehaviour:
   TypeEnemy: 0
   _immortal: 0
   _currentHealth: 0
+  spawn: {fileID: 0}
+  spawnEgg: {fileID: 0}
   movement: {fileID: 0}
   _healtBar: {fileID: 1331999730439473259}
   _vfx: {fileID: 7001993309038369502, guid: a0b343e96e045ef4abdbc0d1692a32f1, type: 3}
   _isDead: 0
+  attack: {fileID: 4824105690842836537}
 --- !u!114 &4824105690842836537
 MonoBehaviour:
   m_ObjectHideFlags: 0

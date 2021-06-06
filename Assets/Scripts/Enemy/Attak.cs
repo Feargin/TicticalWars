@@ -4,6 +4,8 @@ using DG.Tweening;
 
 public class Attak : MonoBehaviour
 {
+	[Zenject.Inject, HideInInspector] public SoundController soundController;
+	
 	public bool _needVisiable = false;
 	public int _damage = 1;
 	public List<Vector3Int> RangeAttak;
@@ -24,20 +26,16 @@ public class Attak : MonoBehaviour
 			entity.DealDamage(_damage);
 		}
 
-		if(gameObject.GetComponent<Entity>().TypeEnemy != 0) SoundController.Instance.SetClip(1);
-		else SoundController.Instance.SetClip(4);
+		if(gameObject.GetComponent<Entity>().TypeEnemy != 0) soundController.SetClip(1);
+		else soundController.SetClip(4);
 	}
 	
 	public bool CanAttack(Entity entity)
 	{
 		GridGraph grid = entity.movement.pathfinding.map.nodemap;
-		
-		//_needVisiable
-		
 		return CheckInFireRadius(entity, grid);
 	}
 	
-	//public bool 
     
 	public bool CheckInFireRadius(Entity entity, GridGraph grid)
 	{

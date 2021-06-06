@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6087a933333fc6041872e742cd0046f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 0}
 --- !u!114 &5929151512011521738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,10 +86,13 @@ MonoBehaviour:
   TypeEnemy: 0
   _immortal: 0
   _currentHealth: 0
+  spawn: {fileID: 0}
+  spawnEgg: {fileID: 0}
   movement: {fileID: 0}
   _healtBar: {fileID: 409054467959327471}
   _vfx: {fileID: 7001993309038369502, guid: a0b343e96e045ef4abdbc0d1692a32f1, type: 3}
   _isDead: 0
+  attack: {fileID: 763948079657260725}
 --- !u!114 &763948079657260725
 MonoBehaviour:
   m_ObjectHideFlags: 0

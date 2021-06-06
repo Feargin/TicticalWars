@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] private LayerMask _walkableMask;
 	
 	private Entity _selectedPlayer;
+	[Zenject.Inject] private MoveHelper _moveHelper;
 	
 	private Camera _main;
 	
@@ -50,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
 		if(Physics.Raycast(_main.ScreenPointToRay(Mouse.current.position.ReadValue()), out RaycastHit hit, float.PositiveInfinity, _walkableMask, QueryTriggerInteraction.Ignore))
 		{
 			_selectedPlayer.movement.MoveTo(hit.transform.position);
-			MoveHelper.Instance.UnlockSelect();
+			_moveHelper.UnlockSelect();
 		}
 	}
 }

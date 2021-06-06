@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class MoveHelper : Singleton<MoveHelper>
+public class MoveHelper : MonoBehaviour
 {
 	[ReadOnly] public Entity _selectedEntity;
 	[SerializeField] private LayerMask _entityMask;
@@ -88,8 +88,10 @@ public class MoveHelper : Singleton<MoveHelper>
 		_mouseOverSelected = false;
 		_selectedEntity = null;
 		_pathfinding = null;
-		_passablePath.Clear();
-		_obstacles.Clear();
+		if(_passablePath != null)
+			_passablePath.Clear();
+		if(_obstacles != null)
+			_obstacles.Clear();
 	}
 	
 	private void SelectEntity()

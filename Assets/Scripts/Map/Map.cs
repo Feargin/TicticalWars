@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Map : Singleton<Map>
+public class Map : MonoBehaviour
 {
 	public float GridSize = 1f;
 	public GridGraph nodemap;

@@ -5,13 +5,15 @@ public class CollideAttack : MonoBehaviour
 	public int Damage = 10;
 	private bool _enabled = false;
 	
+	[Zenject.Inject, HideInInspector] public SoundController soundController;
+	
 	public event System.Action OnDealDamage;
 	
 	private void OnCollisionEnter(Collision col)
 	{
 		if (_enabled && col.transform.TryGetComponent(out PlayerEntity player))
 		{
-			SoundController.Instance.SetClip(4);
+			soundController.SetClip(4);
 			player.DealDamage(Damage);
 			OnDealDamage?.Invoke();
 		}

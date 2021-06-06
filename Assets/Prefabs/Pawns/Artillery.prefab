@@ -85,6 +85,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -164,6 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b8f19e90825de643b8465175dccf517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundController: {fileID: 0}
   _needVisiable: 0
   _damage: 34
   RangeAttak:
@@ -220,11 +222,14 @@ MonoBehaviour:
   TypeEnemy: 2
   _immortal: 0
   _currentHealth: 0
+  spawn: {fileID: 0}
+  spawnEgg: {fileID: 0}
   movement: {fileID: 0}
   _healtBar: {fileID: 0}
   _vfx: {fileID: 6761922792245461408, guid: 81fc879529f5ec344b3d5bcb3ea2d6dc, type: 3}
   _isDead: 0
   AI_Behavoiur: {fileID: 5720443418811688080}
+  attack: {fileID: 7737780338055467308}
   TurnPassed: 0
 --- !u!114 &5014676229011892877
 MonoBehaviour:
@@ -253,6 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6087a933333fc6041872e742cd0046f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map: {fileID: 0}
 --- !u!54 &-3151390825377288848
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -333,6 +339,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -483,6 +490,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
