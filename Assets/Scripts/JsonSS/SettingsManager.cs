@@ -3,8 +3,6 @@ using SoundSteppe.JsonSS;
 
 public class SettingsManager : SaveableMono
 {
-	public JsonSS jsonSS;
-	
 	[Header("Settings")]
 	[Saveable] public int LevelAmount = 7;
 	[Saveable] public float SoundVolume = 0.73f;
@@ -12,7 +10,7 @@ public class SettingsManager : SaveableMono
 	
 	private void Start()
 	{
-		string json = jsonSS.LoadObject("Settings");
+		string json = JsonSS.LoadObject("Settings");
 		if(string.IsNullOrEmpty(json) == false)
 		{
 			this.LoadGameObject(json);
@@ -21,6 +19,6 @@ public class SettingsManager : SaveableMono
 	
 	private void OnApplicationQuit()
 	{
-		jsonSS.SaveObject("Settings", this);
+		JsonSS.SaveObject("Settings", this);
 	}
 }

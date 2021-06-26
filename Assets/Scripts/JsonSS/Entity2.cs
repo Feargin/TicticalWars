@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using SoundSteppe.JsonSS;
 
+[System.Serializable]
 public class Entity2 : SaveableMono
 {
 	public Inventory inv;

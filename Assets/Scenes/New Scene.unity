@@ -166,7 +166,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 008401ac64121374ca7547cb4b10d317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonSS: {fileID: 1675805804}
   LevelAmount: -1736
   SoundVolume: 5.01
   PlayerName: lklkjk
@@ -212,7 +211,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1675805802}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0ca0bc763d490a41a8a9663d3efe981, type: 3}
+  m_Script: {fileID: 11500000, guid: 31ca6b44f5410eb488b384b2253d9fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1675805805
@@ -227,9 +226,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 090432285b195fc48aa0a9f7cf210d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  binnarySaver: {fileID: 1675805804}
   entityFabric: {fileID: 1675805806}
   entities:
-  - {fileID: 0}
+  - {fileID: 4981840355040391726}
 --- !u!114 &1675805806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,7 +242,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c7821329a55b7a4a82fc74a61611d04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonSS: {fileID: 1675805804}
   Prefab: {fileID: 4981840355272020793, guid: f9537582df80e1d469955045e608bf7a, type: 3}
 --- !u!1 &1738612570
 GameObject:
@@ -615,3 +614,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9537582df80e1d469955045e608bf7a, type: 3}
+--- !u!114 &4981840355040391726 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4981840355272020793, guid: f9537582df80e1d469955045e608bf7a, type: 3}
+  m_PrefabInstance: {fileID: 4981840355040391725}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c183f8d79df067e4fad4f9a265d379dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
