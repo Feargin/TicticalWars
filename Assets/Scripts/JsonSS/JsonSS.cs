@@ -25,7 +25,7 @@ namespace SoundSteppe.JsonSS
 		{
 			string json = "{}";
 			
-			json = SaveObject(obj, ID);
+			json = GetObjectJson(obj);
 			
 			string path = Application.dataPath + "/" + ID + ".data";
 			Encrypt(path, json);
@@ -33,7 +33,7 @@ namespace SoundSteppe.JsonSS
 		
 		public static void LoadGameObject(string ID, MonoBehaviour mono)
 		{
-			string json = JsonSS.LoadObject(ID);
+			string json = JsonSS.LoadObjectJson(ID);
 			
 			if(string.IsNullOrEmpty(json) == false)
 			{
@@ -41,7 +41,7 @@ namespace SoundSteppe.JsonSS
 				foreach(var s in saveable)
 				{
 					string componentJson = ExtractJsonTo(s, json);
-					Load(s, componentJson);
+					PassValuesToFields(s, componentJson);
 				}
 			}
 		}
@@ -54,7 +54,7 @@ namespace SoundSteppe.JsonSS
 				foreach(var s in saveable)
 				{
 					string componentJson = ExtractJsonTo(s, json);
-					Load(s, componentJson);
+					PassValuesToFields(s, componentJson);
 				}
 			}
 		}
@@ -65,7 +65,7 @@ namespace SoundSteppe.JsonSS
 			
 			foreach(var e in array)
 			{
-				json += "*{" + SaveObject(e, ID) + "}*";
+				json += "*{" + GetObjectJson(e) + "}*";
 			}
 			
 			string path = Application.dataPath + "/" + ID + ".data";
@@ -99,7 +99,7 @@ namespace SoundSteppe.JsonSS
 		#endregion
 		
 		#region Private methods
-		private static string LoadObject(string ID)
+		private static string LoadObjectJson(string ID)
 		{
 			string path = Application.dataPath + "/" + ID + ".data";
 			string json = "";
@@ -109,7 +109,7 @@ namespace SoundSteppe.JsonSS
 			return json;
 		}
 		
-		private static string SaveObject(MonoBehaviour mono, string ID)
+		private static string GetObjectJson(MonoBehaviour mono)
 		{
 			string json = "";
 			var saveable = mono.GetComponents<ISaveable>();
@@ -121,12 +121,12 @@ namespace SoundSteppe.JsonSS
 			var ss = mono.GetComponents<MonoBehaviour>();
 			foreach(var s in ss)
 			{
-				json += s.GetType() + ":|" + Save(s) + "|";
+				json += s.GetType() + ":|" + GetFieldsJson(s) + "|";
 			}
 			return json;
 		}
 		
-		private static string Save(MonoBehaviour s)
+		private static string GetFieldsJson(MonoBehaviour s)
 		{
 			string json = "{}";
 			JSONNode node = JSON.Parse(json);
@@ -178,7 +178,7 @@ namespace SoundSteppe.JsonSS
 			return node.ToString();
 		}
 		
-		private static void Load(MonoBehaviour s, string json)
+		private static void PassValuesToFields(MonoBehaviour s, string json)
 		{
 			JSONNode node = JSON.Parse(json);
 			
