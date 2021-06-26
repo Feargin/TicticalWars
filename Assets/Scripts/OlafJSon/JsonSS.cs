@@ -1,16 +1,26 @@
 ﻿using System.IO;
-using System.Reflection;
-using UnityEngine;
-using UnityEngine.InputSystem;
-using SimpleJSON;
 using System.Linq;
+using System.Text;
+using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using SimpleJSON;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace SoundSteppe.JsonSS
 {
 	public sealed class JsonSS : MonoBehaviour
 	{
+		private readonly string crypt_password = "l2Kfrql5o4m89545";
+		
+		private readonly byte[] crypt_iv = 
+		{ 0x12, 0x3, 0x9, 0x3, 0x16, 
+			0x15, 0x6, 0x15, 0x14, 0x12, 
+			0x14, 0x15, 0x12, 0x15, 0x14, 0x8 
+		};
+		
 		public void SaveArray(string ID, SaveableMono[] array)
 		{
 			string json = "";
@@ -21,15 +31,88 @@ namespace SoundSteppe.JsonSS
 			}
 			
 			string path = Application.dataPath + "/" + ID + ".data";
-			File.WriteAllText(path, json);
-			//print(json);
-		} 
+			Encrypt(path, json);
+		}
+		
+		private void Encrypt(string path, string json)
+		{
+			using(Aes iAes = Aes.Create())
+			{
+				iAes.IV = crypt_iv;
+				
+				iAes.Key = ConvertToKeyBytes(iAes, crypt_password);
+				var textBytes = Encoding.UTF8.GetBytes(json);
+				var aesEncryptor = iAes.CreateEncryptor();
+				var encryptedBytes = aesEncryptor.TransformFinalBlock(textBytes, 0, textBytes.Length);
+				
+				File.WriteAllText(path, System.Convert.ToBase64String(encryptedBytes));
+			}
+		}
+		
+		private string Decrypt(string path)
+		{
+			if (File.Exists(path))
+			{
+				using (Aes aes = Aes.Create())
+				{
+					string json = File.ReadAllText(path);
+					var ivBytes = crypt_iv;
+					
+					byte[] encryptedTextBytes = null;
+					try
+					{
+						encryptedTextBytes = System.Convert.FromBase64String(json);
+					}
+					catch
+					{
+						Debug.LogError("Datafile is corrupted!");
+						return "";
+					}
+					var decryptor = aes.CreateDecryptor(ConvertToKeyBytes(aes, crypt_password), ivBytes);
+					
+					byte[] decryptedBytes = null;
+					try
+					{
+						decryptedBytes = decryptor.TransformFinalBlock(encryptedTextBytes, 0, encryptedTextBytes.Length);
+					}
+					catch
+					{
+						Debug.LogError("Datafile is corrupted!");
+						return "";
+					}
+					
+					if(decryptedBytes != null)
+						json = Encoding.UTF8.GetString(decryptedBytes);
+					return json;
+				}
+			}
+			return "";
+		}
+		
+		private static byte[] ConvertToKeyBytes(SymmetricAlgorithm algorithm, string password)
+		{
+			algorithm.GenerateKey();
+
+			var keyBytes = Encoding.UTF8.GetBytes(password);
+			var validKeySize = algorithm.Key.Length;
+
+			if (keyBytes.Length != validKeySize)
+			{
+				var newKeyBytes = new byte[validKeySize];
+				System.Array.Copy(keyBytes, newKeyBytes, Mathf.Min(keyBytes.Length, newKeyBytes.Length));
+				keyBytes = newKeyBytes;
+			}
+
+			return keyBytes;
+		}
 		
 		public List<string> LoadArray(string ID)
 		{
 			string path = Application.dataPath + "/" + ID + ".data";
-			string json = File.ReadAllText(path);
+			string json = "";
 			
+			json = Decrypt(path);
+				
 			List<string> elements = new List<string>();
 			
 			string element = "";
@@ -54,14 +137,17 @@ namespace SoundSteppe.JsonSS
 			
 			json = obj.SaveGameObject();
 			
-			string path = Application.dataPath + "/enetity.data";
-			File.WriteAllText(path, json);
+			string path = Application.dataPath + "/" + ID + ".data";
+			Encrypt(path, json);
 		} 
 		 
 		public string LoadObject(string ID)
 		{
-			string path = Application.dataPath + "/enetity.data";
-			string json = File.ReadAllText(path);
+			string path = Application.dataPath + "/" + ID + ".data";
+			string json = "";
+			
+			json = Decrypt(path);
+				
 			return json;
 		}
 	}
@@ -103,8 +189,10 @@ namespace SoundSteppe.JsonSS
 			
 			string compName = s.GetType() + ":|{";
 			int start = json.IndexOf(compName);
+			if(start < 0)
+				return "";
 			int end = json.IndexOf("}|", start);
-			if(start < 0 || end < 0)
+			if(end < 0)
 				return "";
 			compJson = json.Substring(start + compName.Length - 1, end - start - compName.Length + 2);
 			return compJson;
@@ -192,6 +280,10 @@ namespace SoundSteppe.JsonSS
 				if(field.FieldType == typeof(Vector3))
 				{
 					valueObj = node[field.Name].ReadVector3();
+				}
+				else if(field.FieldType == typeof(string))
+				{
+					valueObj = node[field.Name].Value;
 				}
 				else
 				{
