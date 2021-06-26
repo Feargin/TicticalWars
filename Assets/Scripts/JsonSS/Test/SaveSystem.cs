@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class SaveSystem : MonoBehaviour
 {
-	//public BinnarySS binnarySaver;
 	public FabricGO entityFabric;
-	public Entity2[] entities;
+	public MonoBehaviour entity;
+	public MonoBehaviour[] entities;
 	
 	private void Update()
 	{
 		if(Keyboard.current.sKey.wasPressedThisFrame)
 		{
-			//binnarySaver.Save("Entities", entities[0]);
-			entityFabric.SaveObjects("Entities", entities);
+			JsonSS.SaveGameObject("ent", entity);
+			//entityFabric.SaveObjects("Entities", entities);
 		}
 		
 		if(Keyboard.current.lKey.wasPressedThisFrame)
 		{
-			//entities[0] = binnarySaver.Load("Entities") as Entity2;
-			entityFabric.LoadObjects("Entities");
+			JsonSS.LoadGameObject("ent", entity);
+			//entityFabric.LoadObjects("Entities");
 		}
 	}
 }

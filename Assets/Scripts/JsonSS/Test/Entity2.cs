@@ -2,7 +2,7 @@
 using SoundSteppe.JsonSS;
 
 [System.Serializable]
-public class Entity2 : SaveableMono
+public class Entity2 : MonoBehaviour, ISaveable
 {
 	public Inventory inv;
 	public Stats stats;
@@ -19,12 +19,12 @@ public class Entity2 : SaveableMono
 	[Saveable] public float fl = 13.7f;
 	[Saveable] public bool myBool = false;
 	
-	public override void OnSave()
+	public void OnSave()
 	{
 		_myPos = transform.position;
 	}
 	
-	public override void Init()
+	public void Init()
 	{
 		transform.position = _myPos;
 	}

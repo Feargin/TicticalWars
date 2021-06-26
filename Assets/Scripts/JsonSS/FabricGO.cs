@@ -4,24 +4,24 @@ namespace SoundSteppe.JsonSS
 {
 	public sealed class FabricGO : MonoBehaviour
 	{
-		public SaveableMono Prefab;
+		public GameObject Prefab;
 		
-		public void SaveObject(string ID, SaveableMono obj)
+		public void SaveObject(string ID, MonoBehaviour obj)
 		{
-			JsonSS.SaveObject(ID, obj);
+			JsonSS.SaveGameObject(ID, obj);
 		}
 		
-		public void SaveObjects(string ID, SaveableMono[] array)
+		public void SaveObjects(string ID, MonoBehaviour[] array)
 		{
 			JsonSS.SaveArray(ID, array);
 		}
 		
 		public void LoadObject(string ID)
 		{
-			string json = JsonSS.LoadObject(ID);
-			SaveableMono e = Instantiate(Prefab);
-			e.LoadGameObject(json);
-			e.Init();
+			GameObject e = Instantiate(Prefab);
+			JsonSS.LoadGameObject(ID, e.GetComponent<MonoBehaviour>());
+			if(e.TryGetComponent(out ISaveable s))
+				s.Init();
 		}
 		
 		public void LoadObjects(string ID)
@@ -29,9 +29,10 @@ namespace SoundSteppe.JsonSS
 			string[] json = JsonSS.LoadArray(ID).ToArray();
 			for(int i = 0; i < json.Length; i++)
 			{
-				SaveableMono e = Instantiate(Prefab);
-				e.LoadGameObject(json[i]);
-				e.Init();
+				GameObject e = Instantiate(Prefab);
+				JsonSS.LoadGameObject(e.GetComponent<MonoBehaviour>(), json[i]);
+				if(e.TryGetComponent(out ISaveable s))
+					s.Init();
 			}
 		}
 	}

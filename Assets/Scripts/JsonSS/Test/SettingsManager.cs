@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using SoundSteppe.JsonSS;
 
-public class SettingsManager : SaveableMono
+public class SettingsManager : MonoBehaviour
 {
 	[Header("Settings")]
 	[Saveable] public int LevelAmount = 7;
@@ -10,15 +10,11 @@ public class SettingsManager : SaveableMono
 	
 	private void Start()
 	{
-		string json = JsonSS.LoadObject("Settings");
-		if(string.IsNullOrEmpty(json) == false)
-		{
-			this.LoadGameObject(json);
-		}
+		JsonSS.LoadGameObject("Settings", this);
 	}
 	
 	private void OnApplicationQuit()
 	{
-		JsonSS.SaveObject("Settings", this);
+		JsonSS.SaveGameObject("Settings", this);
 	}
 }
