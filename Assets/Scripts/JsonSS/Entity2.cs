@@ -7,6 +7,10 @@ public class Entity2 : SaveableMono
 	public Inventory inv;
 	public Stats stats;
 	
+	[Saveable] public S_Weapon weapon;
+	[Saveable] public S_Weapon[] weaponssss;
+	[Saveable] public string aaa;
+	
 	[Saveable] public Vector3 _myPos;
 	[Saveable] public int[] my_array;
 	public Inventory[] my_inv_arr;

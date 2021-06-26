@@ -70,12 +70,6 @@ namespace SoundSteppe.JsonSS
 			{
 				if(field.GetCustomAttribute<Saveable>() != null)
 				{
-					//if(field.GetValue(this) is SaveableMono)
-					//{
-					//	string child = (field.GetValue(this) as SaveableMono).Save();
-					//	print(child);
-					//}
-					//else 
 					if(field.FieldType.IsArray)
 					{
 						var jsonArray = node[field.Name].AsArray;
@@ -85,9 +79,17 @@ namespace SoundSteppe.JsonSS
 						{
 							foreach(var obj in array)
 							{
-								JSONNode jn = JSONNode.Parse(obj.ToString());
-								if(jn != null)
-									jsonArray.Add(jn);
+								System.Type t = obj.GetType();
+								if(t.IsValueType == true && t.IsPrimitive == false)
+								{
+									jsonArray.Add(JsonUtility.ToJson(obj));
+								}
+								else
+								{
+									JSONNode jn = JSONNode.Parse(obj.ToString());
+									if(jn != null)
+										jsonArray.Add(jn);
+								}
 							}
 						}
 					}
@@ -95,6 +97,11 @@ namespace SoundSteppe.JsonSS
 					{
 						Vector3 v = (Vector3)field.GetValue(this);
 						node[field.Name] = v;
+					}
+					else if(field.FieldType.IsValueType == true && field.FieldType.IsPrimitive == false)
+					{
+						string j = JsonUtility.ToJson(field.GetValue(this));
+						node[field.Name] = j;
 					}
 					else
 					{
@@ -141,6 +148,11 @@ namespace SoundSteppe.JsonSS
 				{
 					valueObj = node[field.Name].Value;
 				}
+				else if(field.FieldType.IsValueType == true && field.FieldType.IsPrimitive == false)
+				{
+					string json = node[field.Name].Value;
+					valueObj = JsonUtility.FromJson(json, field.FieldType);
+				}
 				else
 				{
 					valueObj = System.Convert.ChangeType(valueJson, field.FieldType);
@@ -158,15 +170,24 @@ namespace SoundSteppe.JsonSS
 		private void SetArrayFieldValue(JSONNode node, FieldInfo field)
 		{
 			var valueObj = node[field.Name].AsStringList;
+			System.Type elementType = field.FieldType.GetElementType();
 						
 			List<object> listObj = new List<object>();
-			for(int i = 0; i < valueObj.Count; i++)
+			if(elementType.IsValueType == true && elementType.IsPrimitive == false)
 			{
-				object obj = System.Convert.ChangeType(valueObj[i], field.FieldType.GetElementType());
-				listObj.Add(obj);
+				for(int i = 0; i < valueObj.Count; i++)
+				{
+					listObj.Add(valueObj[i]);
+				}
 			}
-			
-			System.Type elementType = field.FieldType.GetElementType();
+			else
+			{
+				for(int i = 0; i < valueObj.Count; i++)
+				{
+					object obj = System.Convert.ChangeType(valueObj[i], field.FieldType.GetElementType());
+					listObj.Add(obj);
+				}
+			}
 			
 			if(elementType == typeof(System.String))
 			{
@@ -202,11 +223,15 @@ namespace SoundSteppe.JsonSS
 				var array = listObj.Cast<System.Int64>().ToArray();
 				field.SetValue(this, array);
 			}
-			//else if(elementType == typeof(SaveableMono))
-			//{
-			//var array = listObj.Cast<System.Int64>().ToArray();
-			//field.SetValue(this, array);
-			//}
+			else if(elementType.IsValueType == true && elementType.IsPrimitive == false)
+			{
+				System.Array arr = System.Array.CreateInstance(elementType, listObj.Count);
+				for(int i = 0; i < listObj.Count; i++)
+				{
+					arr.SetValue(JsonUtility.FromJson((string)listObj[i], elementType), i);
+				}
+				field.SetValue(this, arr);
+			}
 			else
 			{
 				Debug.LogWarning("Unsupported array type: " + elementType);

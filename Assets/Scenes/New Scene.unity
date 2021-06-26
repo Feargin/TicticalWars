@@ -226,7 +226,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 090432285b195fc48aa0a9f7cf210d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  binnarySaver: {fileID: 1675805804}
   entityFabric: {fileID: 1675805806}
   entities:
   - {fileID: 4981840355040391726}
@@ -599,6 +598,30 @@ PrefabInstance:
     - target: {fileID: 4981840355272020792, guid: f9537582df80e1d469955045e608bf7a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4981840355272020793, guid: f9537582df80e1d469955045e608bf7a, type: 3}
+      propertyPath: weapon.durability
+      value: 117
+      objectReference: {fileID: 0}
+    - target: {fileID: 4981840355272020793, guid: f9537582df80e1d469955045e608bf7a, type: 3}
+      propertyPath: weaponssss.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4981840355272020793, guid: f9537582df80e1d469955045e608bf7a, type: 3}
+      propertyPath: weaponssss.Array.data[0].damage
+      value: -145
+      objectReference: {fileID: 0}
+    - target: {fileID: 4981840355272020793, guid: f9537582df80e1d469955045e608bf7a, type: 3}
+      propertyPath: weaponssss.Array.data[1].damage
+      value: 52
+      objectReference: {fileID: 0}
+    - target: {fileID: 4981840355272020793, guid: f9537582df80e1d469955045e608bf7a, type: 3}
+      propertyPath: weaponssss.Array.data[0].durability
+      value: 84
+      objectReference: {fileID: 0}
+    - target: {fileID: 4981840355272020793, guid: f9537582df80e1d469955045e608bf7a, type: 3}
+      propertyPath: weaponssss.Array.data[1].durability
+      value: -164
       objectReference: {fileID: 0}
     - target: {fileID: 4981840355272020796, guid: f9537582df80e1d469955045e608bf7a, type: 3}
       propertyPath: m_Name
