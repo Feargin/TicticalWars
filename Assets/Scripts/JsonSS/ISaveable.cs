@@ -1,7 +1,7 @@
 ﻿public interface ISaveable
 {
-	// Init is called after instantiate with FabricGO
-	public void Init();
+	// OnLoad is called after instantiate with FabricGO
+	public void OnLoad();
 	
 	// OnSave is called before saving
 	public void OnSave();

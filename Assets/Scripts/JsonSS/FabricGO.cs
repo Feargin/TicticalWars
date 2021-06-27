@@ -13,15 +13,13 @@ namespace SoundSteppe.JsonSS
 		
 		public void SaveObjects(string ID, MonoBehaviour[] array)
 		{
-			JsonSS.SaveArray(ID, array);
+			JsonSS.SaveGameObjects(ID, array);
 		}
 		
 		public void LoadObject(string ID)
 		{
 			GameObject e = Instantiate(Prefab);
 			JsonSS.LoadGameObject(ID, e.GetComponent<MonoBehaviour>());
-			if(e.TryGetComponent(out ISaveable s))
-				s.Init();
 		}
 		
 		public void LoadObjects(string ID)
@@ -31,8 +29,6 @@ namespace SoundSteppe.JsonSS
 			{
 				GameObject e = Instantiate(Prefab);
 				JsonSS.LoadGameObject(e.GetComponent<MonoBehaviour>(), json[i]);
-				if(e.TryGetComponent(out ISaveable s))
-					s.Init();
 			}
 		}
 	}

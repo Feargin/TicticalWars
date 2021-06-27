@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Collections;
 using System.Reflection;
+using System.Linq;
 using System.Text;
 using System.IO;
 using UnityEngine;
-using System.Linq;
 using SimpleJSON;
 
 namespace SoundSteppe.JsonSS
@@ -33,7 +33,7 @@ namespace SoundSteppe.JsonSS
 		
 		public static void LoadGameObject(string ID, MonoBehaviour mono)
 		{
-			string json = JsonSS.LoadObjectJson(ID);
+			string json = LoadObjectJson(ID);
 			
 			if(string.IsNullOrEmpty(json) == false)
 			{
@@ -43,6 +43,20 @@ namespace SoundSteppe.JsonSS
 					string componentJson = ExtractJsonTo(s, json);
 					PassValuesToFields(s, componentJson);
 				}
+				foreach(var s in saveable)
+				{
+					if(s.TryGetComponent(out ISaveable isave))
+						isave.OnLoad();
+				}
+			}
+		}
+		
+		public static void LoadGameObjects(string ID, MonoBehaviour[] array)
+		{
+			var json = LoadArray(ID);
+			for(int i = 0; i < array.Length; i++)
+			{
+				LoadGameObject(array[i], json[i]);
 			}
 		}
 		
@@ -56,10 +70,15 @@ namespace SoundSteppe.JsonSS
 					string componentJson = ExtractJsonTo(s, json);
 					PassValuesToFields(s, componentJson);
 				}
+				foreach(var s in saveable)
+				{
+					if(s.TryGetComponent(out ISaveable isave))
+						isave.OnLoad();
+				}
 			}
 		}
 		
-		public static void SaveArray(string ID, MonoBehaviour[] array)
+		public static void SaveGameObjects(string ID, MonoBehaviour[] array)
 		{
 			string json = "";
 			

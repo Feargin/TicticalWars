@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using SoundSteppe.JsonSS;
 
-[System.Serializable]
 public class Entity2 : MonoBehaviour, ISaveable
 {
+	public Inventory[] my_inv_arr;
 	public Inventory inv;
 	public Stats stats;
 	
@@ -13,7 +13,6 @@ public class Entity2 : MonoBehaviour, ISaveable
 	
 	[Saveable] public Vector3 _myPos;
 	[Saveable] public int[] my_array;
-	public Inventory[] my_inv_arr;
 	
 	[Saveable] public int a = 4;
 	[Saveable] public float fl = 13.7f;
@@ -24,7 +23,7 @@ public class Entity2 : MonoBehaviour, ISaveable
 		_myPos = transform.position;
 	}
 	
-	public void Init()
+	public void OnLoad()
 	{
 		transform.position = _myPos;
 	}
